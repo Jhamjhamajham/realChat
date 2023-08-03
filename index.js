@@ -7,6 +7,33 @@ getUserMedia({ video: false, audio: true }, function (err, stream) {
     var peer = new Peer({
         initiator: location.hash == '#init',
         trickle: false,
+        config: {
+            iceServers: [
+                {
+                    urls: "stun:stun.relay.metered.ca:80",
+                },
+                {
+                    urls: "turn:a.relay.metered.ca:80",
+                    username: "71128f9aebad96f3278e17af",
+                    credential: "JA3seYn6K/Vzq85c",
+                },
+                {
+                    urls: "turn:a.relay.metered.ca:80?transport=tcp",
+                    username: "71128f9aebad96f3278e17af",
+                    credential: "JA3seYn6K/Vzq85c",
+                },
+                {
+                    urls: "turn:a.relay.metered.ca:443",
+                    username: "71128f9aebad96f3278e17af",
+                    credential: "JA3seYn6K/Vzq85c",
+                },
+                {
+                    urls: "turn:a.relay.metered.ca:443?transport=tcp",
+                    username: "71128f9aebad96f3278e17af",
+                    credential: "JA3seYn6K/Vzq85c",
+                },
+            ],
+        },
         stream: stream
     })
     //   console.log(peer);
