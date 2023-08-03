@@ -36,31 +36,55 @@ getUserMedia({ video: false, audio: true }, function (err, stream) {
         },
         stream: stream
     })
+
+    peer.on('error', function (error) {
+        console.error('Peer error: ', error);
+    });
     //   console.log(peer);
     peer.on('signal', function (data) {
         // console.log(data);
-        document.getElementById('yourId').value = JSON.stringify(data)
+        try {
+            document.getElementById('yourId').value = JSON.stringify(data);
+        } catch (error) {
+            console.error('Error updating yourId: ', error);
+        }
     })
 
     document.getElementById('connect').addEventListener('click', function () {
-        var otherId = JSON.parse(document.getElementById('otherId').value)
-        peer.signal(otherId)
+        try {
+            var otherId = JSON.parse(document.getElementById('otherId').value);
+            peer.signal(otherId);
+        } catch (error) {
+            console.error('Error parsing otherId: ', error);
+        }
     })
 
     document.getElementById('send').addEventListener('click', function () {
-        var yourMessage = document.getElementById('yourMessage').value
-        peer.send(yourMessage)
+        try {
+            var yourMessage = document.getElementById('yourMessage').value;
+            peer.send(yourMessage);
+        } catch (error) {
+            console.error('Error sending message: ', error);
+        }
     })
 
     peer.on('data', function (data) {
-        document.getElementById('messages').textContent += data + '\n'
+        try {
+            document.getElementById('messages').textContent += data + '\n';
+        } catch (error) {
+            console.error('Error updating messages: ', error);
+        }
     })
 
     peer.on('stream', function (stream) {
-        var video = document.createElement('video');
-        document.body.appendChild(video);
-        video.srcObject = stream;
-        video.play();
+        try {
+            var video = document.createElement('video');
+            document.body.appendChild(video);
+            video.srcObject = stream;
+            video.play();
+        } catch (error) {
+            console.error('Error displaying stream: ', error);
+        }
     })
 
 });
