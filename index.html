@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+    <title>Ayush Real Time</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
 
-    <label>Your ID:</label><br/>
-    <textarea id="yourId"></textarea><br/>
-    <label>Other ID:</label><br/>
-    <textarea id="otherId"></textarea>
-    <button id="connect">connect</button><br/>
+    <div class="mb-3">
+        <label for="yourId" class="form-label">Your ID:</label>
+        <textarea id="yourId" class="form-control" rows="3" readonly></textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label for="otherId" class="form-label">Other ID:</label>
+        <textarea id="otherId" class="form-control" rows="3"></textarea>
+    </div>
 
-    <label>Enter Message:</label><br/>
-    <textarea id="yourMessage"></textarea>
-    <button id="send">send</button>
+    <button id="connect" class="btn btn-primary mb-3">Connect</button>
+
+    <div class="mb-3">
+        <label for="yourMessage" class="form-label">Enter Message:</label>
+        <textarea id="yourMessage" class="form-control" rows="3"></textarea>
+    </div>
+
+    <button id="send" class="btn btn-primary mb-3">Send</button>
+
     <pre id="messages"></pre>
 
+    <!-- Include Bootstrap JS and your JavaScript bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="bundle.js" charset="utf-8"></script>
-  </body>
+</body>
 </html>
